@@ -1,0 +1,9 @@
+// Multiply two strings
+string multiply(string s,string p){
+  string r=multiplyint(p,s[0]-'0');
+  for(int i=1;i<s.length();i++){
+    r.push_back('0');
+    r=sum(r,multiplyint(p,s[i]-'0'));
+  }
+  return r;
+}

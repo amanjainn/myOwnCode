@@ -1,0 +1,22 @@
+//Segmented Sieve
+vector<ll> segmentedSieve(ll l,ll r,vector<ll> &primes){
+   vector<int> rangePrimes(r-l+1,1);
+   vector<ll> result;
+   for(int i=0; primes[i] *(long long) primes[i]<=r; i++){
+       long long currprime=primes[i];
+       long long base= (l/currprime)*currprime;
+       if(base<l){
+           base+=currprime;
+       }
+       for(int i=base; i<=r; i+=currprime){
+          rangePrimes[i-l]=0;
+       }
+       if(base==currprime)
+          rangePrimes[base-l]=1;
+   }
+   for(int i=0 ; i<rangePrimes.size() ; i++){
+       if(rangePrimes[i])
+        result.push_back(l+i);
+   }
+   return result;
+}

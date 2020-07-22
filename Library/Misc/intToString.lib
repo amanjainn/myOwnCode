@@ -1,0 +1,12 @@
+
+// Interger t
+string tos(int n){
+  string r;
+  while(n>9){
+    r.push_back(n%10+'0');
+    n/=10;
+  }
+  r.push_back(n%10+'0');
+  reverse(r.begin(),r.end());
+  return r;
+}

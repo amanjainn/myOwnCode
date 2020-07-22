@@ -1,0 +1,15 @@
+// Prime factorization
+vector<ll> factorize(ll n){
+    vector<ll> factors;
+    vector<int> primes=primesieve(n);
+    for(int i=0; i*i<=n ; i++){
+        ll prime=primes[i];
+          if(n%prime==0){
+              while(n%prime==0){
+              factors.push_back(prime);
+                  n/=prime;
+              }}}
+    if(n!=1)
+    factors.push_back(n);
+    return factors;
+}

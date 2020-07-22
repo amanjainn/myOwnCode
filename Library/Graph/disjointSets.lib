@@ -1,0 +1,38 @@
+
+//Union/find
+struct DisjoinSets{
+    int *parent,*rank;
+    int n;
+    DisjoinSets(int n){
+        parent=new int[n];
+        rank=new int[n];
+        for(int i=0 ; i<n ; i++){
+            parent[i]=i;
+            rank[i]=0;
+        }
+    }
+    int find(int u){
+        if(parent[u]==u)
+        return parent[u];
+        parent[u]=find(parent[u]);
+        return parent[u];
+    }
+    void unite (int u, int v){
+        int u_rep=find(u);
+        int v_rep=find(v);
+        if(u_rep==v_rep)
+        return;
+       if(rank[u_rep]>rank[v_rep])
+            parent[v_rep]=u_rep;
+
+        else if(rank[u_rep]<rank[v_rep])
+            parent[u_rep]=v_rep;
+         else{
+             rank[v_rep]++;
+             parent[u_rep]=v_rep;
+         }
+    }
+};
+
+
+

@@ -1,0 +1,9 @@
+// Multiply int to a string
+string multiplyint(string s,int n){
+  string r=tos((s[0]-'0')*n);
+  for(int i=1;i<s.length();i++){
+    r.push_back('0');
+    r=sum(r,tos((s[i]-'0')*n));
+  }
+  return r;
+}

@@ -1,0 +1,44 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+#define ll long long
+#define ull unsigned long long
+
+ull Power(ull a, ull x,ull p){
+       if(x==1)
+        return a;  
+        ull result=1;
+        a=a%p;
+        while(x){
+              if(x&1)
+              result=(result*a)%p;
+          x=x>>1;
+          a=(a*a)%p;
+      }
+return result;
+}
+
+ull inverseMod(ull a, ull p){
+    return Power(a,p-2,p);
+}
+
+
+ull nCrModp(ull N, ull R, ull P){
+    if(R==0)
+    return 1;
+    unsigned long long fact[N+1];
+    fact[0]=1;
+    for(int i=1; i<=N ; i++){
+          fact[i]=(fact[i-1]*i)%P;  
+    }
+    return (fact[N]*inverseMod(fact[R],P)%P *inverseMod(fact[N-R],P)%P)%P;
+}
+
+
+
+int main(){
+    ull int N,R,P;
+    cin>>N>>R>>P;
+
+    cout<<nCrModp(N,R,P);
+}
